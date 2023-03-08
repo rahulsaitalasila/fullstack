@@ -1,0 +1,14 @@
+sequenceDiagram
+    participant User
+    participant Browser
+    participant Server
+
+    User->>Browser: Open https://studies.cs.helsinki.fi/exampleapp/notes
+    Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    Server-->>Browser: HTML code with form for creating new note
+    User->>Browser: Writes a note in the text field
+    User->>Browser: Clicks the submit button
+    Browser->>Server: POST https://studies.cs.helsinki.fi/exampleapp/notes with note data
+    Server->>Browser: 302 Redirect to https://studies.cs.helsinki.fi/exampleapp/notes
+    Browser->>Server: GET https://studies.cs.helsinki.fi/exampleapp/notes
+    Server-->>Browser: HTML code with updated notes list including the new note
